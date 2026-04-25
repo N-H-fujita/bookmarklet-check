@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "bookmarklet": "npm run build && node scripts/makeBookmarklet.js"
   },
   "keywords": [],
   "author": "",
