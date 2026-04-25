@@ -14,5 +14,11 @@ if (existing) {
   document.body.appendChild(rootEl);
 
   const root = createRoot(rootEl);
-  root.render(<App />);
+
+  const handleClose = () => {
+    root.unmount();   // Reactの破棄
+    rootEl.remove();  // DOM削除
+  };
+
+  root.render(<App onClose={handleClose} />);
 }

@@ -1,11 +1,16 @@
 import React from "react";
 
-export default function App() {
+export default function App({ onClose }) {
   return (
     <div style={modalStyle}>
       <div style={headerStyle}>
         <h2 style={{ margin: 0, fontSize: "18px" }}>ページチェック</h2>
+
+        <button onClick={onClose} style={closeButtonStyle}>
+          ×
+        </button>
       </div>
+
       <p style={{ margin: "12px 0 0" }}>最小構成の表示確認です。</p>
     </div>
   );
@@ -29,4 +34,11 @@ const headerStyle = {
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
+};
+
+const closeButtonStyle = {
+  background: "transparent",
+  border: "none",
+  fontSize: "20px",
+  cursor: "pointer",
 };
