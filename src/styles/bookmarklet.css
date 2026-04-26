@@ -1,0 +1,86 @@
+.bc-modal {
+  width: 320px;
+  padding: 16px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  font-family: sans-serif;
+  z-index: 999999;
+}
+
+.bc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bc-title {
+  margin: 0;
+  font-size: 18px;
+}
+
+.bc-close-button {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.bc-tab-list {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.bc-tab {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  background: #f5f5f5;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.bc-tab.is-active {
+  background: #222;
+  border-color: #222;
+  color: #fff;
+}
+
+.bc-content {
+  margin-top: 12px;
+}
+
+.bc-sub-tab-list {
+  margin-bottom: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.bc-sub-tab {
+  padding: 5px 8px;
+  background: #fff;
+  border: 1px solid #bbb;
+  border-radius: 999px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.bc-sub-tab.is-active {
+  background: #e8e8e8;
+  border-color: #555;
+  font-weight: bold;
+}
+
+.bc-sub-content {
+  padding: 10px;
+  background: #fafafa;
+  border: 1px solid #eee;
+  border-radius: 8px;
+}

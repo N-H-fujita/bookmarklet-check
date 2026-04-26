@@ -1,6 +1,7 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App";
+import "./styles/bookmarklet.css";
 
 const ROOT_ID = "__bookmark_checker_root__";
 
