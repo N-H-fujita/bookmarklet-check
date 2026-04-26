@@ -8,8 +8,14 @@ export default function App({ onClose }) {
     { id: "tab4", label: "タブ4" },
     { id: "tab5", label: "タブ5" },
   ];
+  const textTabs = [
+    { id: "categoryA", label: "カテゴリA" },
+    { id: "categoryB", label: "カテゴリB" },
+    { id: "categoryC", label: "カテゴリC" },
+  ];
 
   const [activeTab, setActiveTab] = useState(tabs[0].id);
+  const [activeTextTab, setActiveTextTab] = useState(textTabs[0].id);
 
   return (
     <div style={modalStyle}>
@@ -40,7 +46,30 @@ export default function App({ onClose }) {
 
       {/* コンテンツ */}
       <div style={contentStyle}>
-        {activeTab === "tab1" && <div>タブ1（仮）</div>}
+        {activeTab === "tab1" && (
+          <>
+            <div style={subTabListStyle}>
+              {textTabs.map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTextTab(tab.id)}
+                  style={{
+                    ...subTabStyle,
+                    ...(activeTextTab === tab.id ? activeSubTabStyle : {}),
+                  }}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+
+            <div style={subContentStyle}>
+              {activeTextTab === "categoryA" && <div>カテゴリAのチェック（仮）</div>}
+              {activeTextTab === "categoryB" && <div>カテゴリBのチェック（仮）</div>}
+              {activeTextTab === "categoryC" && <div>カテゴリCのチェック（仮）</div>}
+            </div>
+          </>
+        )}
         {activeTab === "tab2" && <div>タブ2（仮）</div>}
         {activeTab === "tab3" && <div>タブ3（仮）</div>}
         {activeTab === "tab4" && <div>タブ4（仮）</div>}
@@ -101,4 +130,33 @@ const activeTabStyle = {
 
 const contentStyle = {
   marginTop: "12px",
+};
+
+const subTabListStyle = {
+  marginBottom: "12px",
+  display: "flex",
+  flexWrap: "wrap",
+  gap: "6px",
+};
+
+const subTabStyle = {
+  padding: "5px 8px",
+  border: "1px solid #bbb",
+  background: "#fff",
+  borderRadius: "999px",
+  cursor: "pointer",
+  fontSize: "12px",
+};
+
+const activeSubTabStyle = {
+  background: "#e8e8e8",
+  borderColor: "#555",
+  fontWeight: "bold",
+};
+
+const subContentStyle = {
+  padding: "10px",
+  background: "#fafafa",
+  border: "1px solid #eee",
+  borderRadius: "8px",
 };
