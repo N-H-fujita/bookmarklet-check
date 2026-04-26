@@ -1,21 +1,23 @@
 import React, { useState } from "react";
+import Tabs from "./ui/Tabs";
+import SubTabs from "./ui/SubTabs";
+
+const tabs = [
+  { id: "tab1", label: "タブ1" },
+  { id: "tab2", label: "タブ2" },
+  { id: "tab3", label: "タブ3" },
+  { id: "tab4", label: "タブ4" },
+  { id: "tab5", label: "タブ5" },
+];
+
+const textTabs = [
+  { id: "categoryA", label: "カテゴリA" },
+  { id: "categoryB", label: "カテゴリB" },
+  { id: "categoryC", label: "カテゴリC" },
+];
 
 export default function App({ onClose }) {
-  const tabs = [
-    { id: "tab1", label: "タブ1" },
-    { id: "tab2", label: "タブ2" },
-    { id: "tab3", label: "タブ3" },
-    { id: "tab4", label: "タブ4" },
-    { id: "tab5", label: "タブ5" },
-  ];
-  const textTabs = [
-    { id: "categoryA", label: "カテゴリA" },
-    { id: "categoryB", label: "カテゴリB" },
-    { id: "categoryC", label: "カテゴリC" },
-  ];
-
   const [activeTab, setActiveTab] = useState(tabs[0].id);
-  const [activeTextTab, setActiveTextTab] = useState(textTabs[0].id);
 
   return (
     <div className="bc-modal">
@@ -29,40 +31,20 @@ export default function App({ onClose }) {
       </div>
 
       {/* タブ */}
-      <div className="bc-tab-list">
-        {tabs.map((tab) => (
-          <button
-            key={tab.id}
-            onClick={() => setActiveTab(tab.id)}
-            className={`bc-tab ${activeTab === tab.id ? "is-active" : ""}`}
-          >
-            {tab.label}
-          </button>
-        ))}
-      </div>
+      <Tabs tabs={tabs} activeTab={activeTab} onChange={setActiveTab} />
 
       {/* コンテンツ */}
       <div className="bc-content">
         {activeTab === "tab1" && (
-          <div>
-            <div className="bc-sub-tab-list">
-              {textTabs.map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTextTab(tab.id)}
-                  className={`bc-sub-tab ${activeTextTab === tab.id ? "is-active" : ""}`}
-                >
-                  {tab.label}
-                </button>
-              ))}
-            </div>
-
-            <div className="bc-sub-content">
-              {activeTextTab === "categoryA" && <div>カテゴリAのチェック（仮）</div>}
-              {activeTextTab === "categoryB" && <div>カテゴリBのチェック（仮）</div>}
-              {activeTextTab === "categoryC" && <div>カテゴリCのチェック（仮）</div>}
-            </div>
-          </div>
+          <SubTabs
+            tabs={textTabs}
+            renderContent={(active) => {
+              if (active === "categoryA") return <div>カテゴリAのチェック（仮）</div>;
+              if (active === "categoryB") return <div>カテゴリBのチェック（仮）</div>;
+              if (active === "categoryC") return <div>カテゴリCのチェック（仮）</div>;
+              return null;
+            }}
+          />
         )}
 
         {activeTab === "tab2" && <div>タブ2（仮）</div>}
